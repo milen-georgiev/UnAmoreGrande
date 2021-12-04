@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 video-form-add">
+                <div class="container d-flex justify-content-center">
+                    <form
+                            th:action="@{/add/articles}"
+                            th:method="POST"
+                            th:object="${grandmasSecretArticlesBindingModel}"
+                            enctype="multipart/form-data">
+                        <div class="container-fluid">
+                            <div class="col-12 d-flex justify-content-center">
+                                <h3 class="mt-3">Добави Статия</h3>
+                            </div>
+                            <div class="row  m-5">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <img src="/images/article.png" alt="video-background">
+                                </div>
+                                <div class="col-12 mt-5">
+                                    <input
+                                            name="name"
+                                            th:field="*{name}"
+                                            required
+                                            type="text"
+                                            class="form-control"
+                                            minlength="5"
+                                            placeholder="Заглавие">
+                                    <small class="invalid-feedback  form-text bg-danger rounded">Минимална дължина 5
+                                        символа</small>
+                                </div>
+
+                                <div class="col-12 mt-3">
+                                    <input name="pictures"
+                                           th:field="*{pictures}"
+                                           required type="file"
+                                           class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <h5>Изберете роректна категория</h5>
+                                    <select
+                                            th:field="*{category}"
+                                            class="form-control">
+                                        <option th:each="t : ${T(com.example.unamoregrande.model.entity.enums.ArticlesNameEnum).values()}"
+                                                th:value="${t}" th:text="${t}"></option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mt-3">
+
+                                <textarea
+                                        class="form-control"
+                                        name="description"
+                                        th:field="*{description}"
+                                        minlength="50"
+                                        rows="5"
+                                        placeholder="Описание">
+                                </textarea>
+                                    <small class="invalid-feedback  form-text bg-danger rounded">Минимална дължина 50
+                                        символа</small>
+                                </div>
+                            </div>
+                            <div class="m-5">
+                                <button class="login-form-button" type="submit">Добави</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

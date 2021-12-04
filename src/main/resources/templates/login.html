@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+
+<section>
+
+
+    <form class="login-form"
+          th:action="@{/users/login}"
+          th:method="POST">
+        <div class="login-form-logo">
+            <img class="login-logo" src="/images/login.png" alt="Logo">
+        </div>
+        <div class="login-box">
+            <div class="login-detail h2">Логин</div>
+
+            <div class="login-detail">
+                <img src="/images/username-icon.png" alt="username">
+            </div>
+
+            <div class="col-auto">
+                <input th:value="${username}"
+                       id="username"
+                       name="username"
+                       type="text" min="4" max="20"
+                       class="form-control"
+                       placeholder="Username"/>
+
+            </div>
+
+            <div class="login-detail mt-2">
+                <img src="/images/password-icon.png" alt="username">
+            </div>
+
+            <div class="col-auto">
+                <input
+                        name="password"
+                        type="password" min="4"
+                        max="20" class="form-control"
+                        placeholder="Password"/>
+
+            </div>
+            <p th:if="${bad_credentials}" class="error alert alert-danger">Wrong user or password</p>
+            <button class="login-form-button" type="submit">Login</button>
+            <div class="forgot-links">
+                <a class="forgot-links" href="">Forgot your password?</a>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

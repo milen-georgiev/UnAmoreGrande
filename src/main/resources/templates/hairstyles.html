@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-9 col-12">
+                        <form
+                                th:action="@{/resources/hairstyles}"
+                                th:method="POST"
+                                th:object="${filterBindingModel}">
+                            <div class="row">
+                                <div class="col-md-6 col-12 mt-3">
+                                    <select
+                                            th:field="*{categoryStyle}"
+                                            class="form-control">
+                                        <option th:each="s : ${T(com.example.unamoregrande.model.entity.enums.StyleNameEnum).values()}"
+                                                th:value="${s}" th:text="${s}"></option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-12 mt-3">
+                                    <button type="submit" class="btn btn-success w-100">Търси</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-3 col-12 mt-3">
+                        <form th:method="GET"
+                              th:action="@{/resources/hairstyles}">
+                            <button class="btn btn-success w-100" type="submit">Покажи Всички</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <div th:each="p : ${allPictures}" class="gallery-card col-lg-3 col-md-4 col-12 mt-4">
+                <img th:src="${p.getUrl()}" class="img-fluid gallery-form-view" alt="images">
+                <div class="row">
+                    <div class="col-12 mt-2 text-center">
+                        <th:block sec:authorize="hasRole('ADMIN')">
+                            <div class="row">
+                                <div class="col-4">
+                                    <form th:action="@{/resources/deleteMakeup}"
+                                          th:method="DELETE">
+                                        <input type="hidden" name="public_id" th:value="${p.getPublicId()}">
+                                        <input type="submit" class="pictures-button-delete pictures-button gallery-form-view"
+                                               value="Изтрий">
+                                    </form>
+                                </div>
+                                <div class="col-4">
+                                    <a th:href="${p.getUrl()}"
+                                       class="pictures-button-detail pictures-button gallery-form-view">Детайлс</a>
+                                </div>
+                                <div class="col-3">
+                                    <div class="row">
+                                        <div class="col-6 likes">
+                                            <form th:action="@{/resources/likesMakeup}"
+                                                  th:method="PUT">
+                                                <input type="hidden" name="likes" th:value="${p.getId()}">
+                                                <button type="submit" class="like-btn gallery-form-view"><i class="fa fa-heart"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-6">
+                                            <p th:text="${p.getLikes()}" class="like-view gallery-form-view"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
+                        <th:block sec:authorize="!hasRole('ADMIN')">
+                            <div class="row">
+                                <div class="col-7">
+                                    <a th:href="${p.getUrl()}"
+                                       class="pictures-button-detail pictures-button">Детайлс</a>
+                                </div>
+                                <div class="col-4">
+                                    <div class="row">
+                                        <div class="col-6 likes">
+                                            <form th:action="@{/resources/likesMakeup}"
+                                                  th:method="PUT">
+                                                <input type="hidden" name="likes" th:value="${p.getId()}">
+                                                <button type="submit" class="like-btn"><i class="fa fa-heart"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-6">
+                                            <p th:text="${p.getLikes()}" class="like-view"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

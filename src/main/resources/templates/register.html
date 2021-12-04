@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+  <section>
+    <form class="login-form"
+          th:action="@{/users/register}"
+          th:method="POST"
+          th:object="${userRegistrationBindingModel}">
+      <div class="login-form-logo">
+        <img class="login-logo" src="/images/registration-logo.png" alt="Logo">
+      </div>
+      <div class="login-box">
+        <div class="login-detail h2">Регистрация</div>
+        <div class="row">
+          <div class="col-2">
+            <img src="/images/username.png" alt="username">
+          </div>
+          <div class="col-10">
+            <input
+                    th:field="*{username}"
+                    th:errorclass="is-invalid"
+                    required
+                    minlength="5"
+                    maxlength="20"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter username">
+            <h5 th:if="${!isBusy}" class="bg-danger">username is busy</h5>
+            <small  class="invalid-feedback  form-text bg-danger rounded">Username length must be more
+              than 3 characters</small>
+          </div>
+        </div>
+        <div class="row  mt-3">
+          <div class="col-2">
+            <img src="/images/name.png" alt="First_name">
+          </div>
+          <div class="col-10">
+            <input
+                    th:field="*{firstName}"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter first name">
+          </div>
+        </div>
+        <div class="row  mt-3">
+          <div class="col-2">
+            <img src="/images/name.png" alt="Last_name">
+          </div>
+          <div class="col-10">
+            <input
+                    th:field="*{lastName}"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter last name">
+          </div>
+        </div>
+        <div class="row  mt-3">
+          <div class="col-2">
+            <img src="/images/age.png" alt="Age">
+          </div>
+          <div class="col-10">
+            <input
+                    th:field="*{age}"
+                    type="number"
+                    class="form-control"
+                    placeholder="Enter Age">
+            </div>
+        </div>
+        <div class="row  mt-3">
+          <div class="col-2">
+            <img src="/images/email.png" alt="email">
+          </div>
+          <div class="col-10">
+            <input
+                    th:field="*{email}"
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter E_mail">
+            <small class="invalid-feedback  form-text bg-danger rounded">Must be valid email</small>
+          </div>
+        </div>
+
+        <div class="row  mt-3">
+          <div class="col-2">
+            <img src="/images/password.png" alt="password">
+          </div>
+          <div class="col-10">
+            <input
+                    th:field="*{password}"
+                    minlength="4"
+                    maxlength="20"
+                    type="password"
+                    class="form-control"
+                    placeholder="Enter password">
+            <small class="invalid-feedback  form-text bg-danger rounded">
+              Password length must be between 4 and 20 characters and passwords should match.</small>
+          </div>
+        </div>
+        <div class="row  mt-3 mb-3">
+          <div class="col-2">
+            <img src="/images/password.png" alt="confirmPassword">
+          </div>
+          <div class="col-10">
+            <input th:field="*{confirmPassword}"
+                   minlength="4"
+                   maxlength="20"
+                   type="password"
+                   class="form-control"
+                   placeholder="Enter confirmPassword">
+            <small id="confirmPasswordError" class="invalid-feedback  form-text bg-danger rounded">
+              Password length must be between 5 and 20 characters and passwords should match.</small>
+          </div>
+        </div>
+
+        <button class="login-form-button" type="submit">Регистрация</button>
+        <div class="forgot-links">
+          <a class="forgot-links" href="/users/forgot">Forgot your password?</a>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

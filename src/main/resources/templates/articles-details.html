@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <input type="hidden" name="articleId" id="articleId" th:value="${articles.id}">
+    <section class="container mt-5">
+        <div class="card mb-3" th:object="${articles}">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img th:src="*{url}" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="*{name}" alt="title"></h5>
+                        <p class="card-text" th:text="*{description}"></p>
+                        <div class="row">
+                            <p class="card-text col-4"><small class="text-muted" th:text="*{added}"></small></p>
+                            <p class="card-text col-4"><small class="text-muted"
+                                                              th:text="*{published.getUsername()}"></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <h1>Коментари</h1>
+        <div>
+            <form id="commentForm" method="POST"
+                  th:action="@{/api/{articleId}/comments(articleId=${articles.id})}">
+                <div class="form-group">
+                    <textarea name="message"
+                              id="message"
+                              rows="5"
+                              class="form-control"
+                              placeholder="оставете съобщение"></textarea>
+                    <small id="messageError" class="invalid-feedback">
+                        Message should be at least 10 characters.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <input type="submit"
+                           class="login-form-button"
+                           id="postComment"
+                           value="Добави"/>
+                </div>
+            </form>
+        </div>
+        <div class="comment-body">
+            <span id="commentContainer"></span>
+        </div>
+    </section>
+
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

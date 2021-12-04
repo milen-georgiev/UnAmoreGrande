@@ -1,0 +1,193 @@
+body {
+    background-image: url("/images/backgraund.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* stilizaciq na menu */
+
+nav div ul li a {
+    color: chartreuse;
+    
+}
+
+
+
+/* stilizaciq na footer */
+footer {
+    background-color: black;
+    width: 100%;
+}
+
+footer h2 {
+    color:  #e502f4 ;
+}
+
+/* login and registratio form */
+
+
+.login-form {
+    box-sizing: border-box;
+    font-family: 'Times New Roman';
+    max-width: 350px;
+    margin:30px auto;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    grid-template-areas:
+    'login-form-logo'
+    'login-box';
+}
+
+.login-form-logo {
+    padding: 40px;
+    background:   #adf7c980;
+}
+.login-logo {
+    display: block;
+    max-width: 125px;
+    margin: 0 auto;
+}
+
+.login-box{
+    padding: 30px;
+    background: #eeeeee;
+}
+
+.login-detail {
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333333;
+    display: flexbox;
+}
+
+.forgot-links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.login-form-button {
+    padding: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    background: #009578;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* stilizaciq profile */
+
+
+.profile-detail {
+    background-image: url("/images/profile.jpg");
+    background-size: cover;
+    background-position: center;   
+}
+
+.detail-br{
+    
+    border-radius: 20px;
+}
+
+.button-profile{
+    width: 100px;
+    height: 40px;
+    
+}
+
+.profile-images {
+    border: solid;
+    padding: 3px;
+    border-radius: 50px;
+}
+
+/* video add form */
+
+.video-form-add {
+ background-image: url("/images/video-add-form.jpg");
+ background-size: cover;
+ background-position: center;
+}
+
+/* galery stilizaciq */
+
+.gallery-card img {
+    width: 515px;
+    height: 200px;
+}
+
+.likes img {
+    width: 24px;
+    height: 24px;
+}
+
+.pictures-button{
+    background-color: #b6effb;
+    color: black;
+    border: 2px solid #1a1e21;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.pictures-button-detail:hover {
+    background-color: #0f5132;
+    color: #b6effb;
+}
+.pictures-button-delete:hover {
+    background-color: #dc3545;
+    color: #b6effb;
+}
+
+
+.like-btn {
+    background-color: #FF1493;
+    border: none;
+    color: white;
+    padding: 7px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.like-btn:hover {
+    background-color: #800080;
+}
+
+.like-view {
+    background-color: #FF1493;
+    border: 1px solid;
+    color: white;
+    width: 45px;
+    padding: 6px;
+    font-size: 16px;
+}
+
+/* resurs stilizaciq */
+
+.gallery-form-view {
+    border-radius: 20px;
+}
+
+/* comentari stilizaciq */
+
+.comment-body{
+    background-color: #b6effb;
+    padding: 15px;
+    border-radius: 30px;
+
+}
+
+
+
+

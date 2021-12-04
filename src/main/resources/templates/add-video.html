@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+<main>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 video-form-add justify-content-center">
+                <form
+                        th:action="@{/add/video}"
+                        th:method="POST"
+                        th:object="${videoBindingModel}">
+                    <div class="container-fluid">
+                        <div class="col-12">
+                            <h3 class="mt-3">Качване на видео</h3>
+                        </div>
+                        <div class="row  m-5">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="/images/video-player.png" alt="video-background">
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <label class="p-3 mb-2 bg-info text-white" for="videoUrl">Поставете последните 11
+                                    символа от Youtube)</label>
+                            </div>
+                            <div class="col-12">
+                                <input id="videoUrl"
+                                       th:field="*{videoUrl}"
+                                       th:errorclass="is-invalid"
+                                       required
+                                       type="text"
+                                       placeholder="Пример -> Um3C9Gmpm4Y"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="row  m-5">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img src="/images/YoutubeHelp.png" class="img-fluid" alt="category">
+                            </div>
+                        </div>
+                        <div class="m-5">
+                            <button class="login-form-button" type="submit">Качи</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>

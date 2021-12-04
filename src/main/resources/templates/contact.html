@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::navigation"></header>
+
+  <main>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-12">
+          <div class="align-self-start">
+            <div class="container d-flex justify-content-center">
+              <div class="card p-4 profile-detail detail-br">
+                <div class=" image d-flex flex-column justify-content-center align-items-center">
+                  <div class="profile-images">
+                    <img src="https://assets.webiconspng.com/uploads/2017/01/Computer-Users-Icon-PNG.png" height="100"
+                      width="100" />
+                  </div>
+
+                  <div class="row m-5">
+
+                    <div class="col-md-6 col-12 d-flex justify-content-center">
+                      <div class="card border-primary mb-3">
+                        <div class="card-header">Здравейте Приятели</div>
+                        <div class="card-body text-primary">
+                          <p class="card-text">Не се колебайте да се свържете<bg>
+                            с нас по какъвто и да е въпрос.<br>
+                            Ще се радваме да чуем вашите <br>
+                            предложения, за оптимизиране на <br>
+                            сайта. Ако имате затрутнея с<br>
+                            функциалноста на приложението<br>
+                            или оплакване от съдържание<br>
+                            качено от друг потребите. <br>
+                            Не чакайте, веднага ни пишете!<br></p>
+                            <p><strong>Екипът на сайта ви очаква</strong></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 col-12 d-flex justify-content-center">
+                      <div class="card border-primary mb-3 ">
+                        <div class="card-header">За контакт с нас:</div>
+                        <div class="card-body text-primary">
+                          
+                          <p class="card-text">
+                            <a class="card-text" href="https://www.facebook.com/">Facebook страница</a>
+                          </p>
+                          <p class="card-text">E-mail :</p>
+                          <p class="card-text">mail@suport.com</p>
+                          <p class="card-text">Телефон</p>
+                          <p class="card-text">+359 88 888 8888</p>
+                          <p class="card-text">+359 87 888 8888</p>
+                          <p class="card-text">+359 89 888 8888</p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </main>
+
+
+
+  <footer th:replace="fragments/commons::footer"></footer>
+
+</body>
+
+</html>
