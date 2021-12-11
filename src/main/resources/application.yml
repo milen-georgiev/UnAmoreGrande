@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/grade_amore?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
-    password: ${MYSQL_PASSWORD}
+    url: ${JDBC_DATABASE_URL:}
+    username: ${JDBC_DATABASE_USERNAME:}
+    password: ${JDBC_DATABASE_PASSWORD:}
   servlet:
     multipart:
       max-file-size: 10MB
@@ -18,9 +18,11 @@ spring:
   jpa:
     # Choose either MySQL 8 or MySQL 5 below
     # For MySQL 8
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    #database-platform: org.hibernate.dialect.MySQL8Dialect
     #For MySQL 5
     #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    #For PostgreiSQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     open-in-view: false
@@ -33,3 +35,5 @@ cloudinary:
     api-key: 214881779555371
     api-secret: ${CLOUDINARY_API_SECRET}
     cloud-name: unamoregrande
+
+server.port: ${PORT:8080}

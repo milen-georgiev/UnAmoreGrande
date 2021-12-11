@@ -1,0 +1,1 @@
+web: java -jar target/UnAmoreGrande-0.0.1-SNAPSHOT.jar
