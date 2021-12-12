@@ -2,6 +2,7 @@ package com.example.unamoregrande.service.impl;
 
 import com.example.unamoregrande.model.entity.PicturesEntity;
 import com.example.unamoregrande.model.entity.enums.StyleNameEnum;
+import com.example.unamoregrande.model.entity.enums.TypeNameEnum;
 import com.example.unamoregrande.model.service.PicturesServiceModel;
 import com.example.unamoregrande.model.view.PicturesViewModel;
 import com.example.unamoregrande.repository.PicturesRepository;
@@ -65,7 +66,8 @@ public class PicturesServiceImpl implements PicturesService {
 
     public List<PicturesViewModel> allPicturesViewHairstyles() {
 
-        List<PicturesEntity> picturesEntityList = picturesRepository.findCategoryHairstyles();
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByCategoryType(TypeNameEnum.HAIRSTYLES);
 
         return picturesEntityList
                 .stream()
@@ -77,7 +79,8 @@ public class PicturesServiceImpl implements PicturesService {
     @Override
     public List<PicturesViewModel> filterPicturesViewHairstyles(StyleNameEnum styleNameEnum) {
 
-        List<PicturesEntity> picturesEntityList = picturesRepository.findFilterCategoryHairstyles(styleNameEnum);
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByCategoryTypeAndCategoryStyle(TypeNameEnum.HAIRSTYLES, styleNameEnum);
 
         return picturesEntityList
                 .stream()
@@ -90,7 +93,9 @@ public class PicturesServiceImpl implements PicturesService {
 
     @Override
     public List<PicturesViewModel> allPicturesViewMakeup() {
-        List<PicturesEntity> picturesEntityList = picturesRepository.findCategoryMakeup();
+
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByCategoryType(TypeNameEnum.MAKEUP);
 
         return picturesEntityList
                 .stream()
@@ -99,8 +104,10 @@ public class PicturesServiceImpl implements PicturesService {
     }
 
     @Override
-    public List<PicturesViewModel> filterPicturesViewMakeup(StyleNameEnum categoryStyle) {
-        List<PicturesEntity> picturesEntityList = picturesRepository.findFilterCategoryMakeup(categoryStyle);
+    public List<PicturesViewModel> filterPicturesViewMakeup(StyleNameEnum styleNameEnum) {
+
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByCategoryTypeAndCategoryStyle(TypeNameEnum.MAKEUP, styleNameEnum);
 
         return picturesEntityList
                 .stream()
@@ -115,7 +122,9 @@ public class PicturesServiceImpl implements PicturesService {
 
     @Override
     public List<PicturesViewModel> allPicturesViewManicure() {
-        List<PicturesEntity> picturesEntityList = picturesRepository.findCategoryManicure();
+
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByCategoryType(TypeNameEnum.MANICURE);
 
         return picturesEntityList
                 .stream()
@@ -124,8 +133,10 @@ public class PicturesServiceImpl implements PicturesService {
     }
 
     @Override
-    public List<PicturesViewModel> filterPicturesViewManicure(StyleNameEnum categoryStyle) {
-        List<PicturesEntity> picturesEntityList = picturesRepository.findFilterCategoryManicure(categoryStyle);
+    public List<PicturesViewModel> filterPicturesViewManicure(StyleNameEnum styleNameEnum) {
+
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByCategoryTypeAndCategoryStyle(TypeNameEnum.MANICURE, styleNameEnum);
 
         return picturesEntityList
                 .stream()

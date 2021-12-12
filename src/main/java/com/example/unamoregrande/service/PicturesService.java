@@ -13,15 +13,15 @@ public interface PicturesService {
 
     List<PicturesViewModel> allPicturesViewHairstyles();
 
-    List<PicturesViewModel> filterPicturesViewHairstyles(StyleNameEnum categoryStyle);
+    List<PicturesViewModel> filterPicturesViewHairstyles(StyleNameEnum styleNameEnum);
 
     List<PicturesViewModel> allPicturesViewMakeup();
 
-    List<PicturesViewModel> filterPicturesViewMakeup(StyleNameEnum categoryStyle);
+    List<PicturesViewModel> filterPicturesViewMakeup(StyleNameEnum styleNameEnum);
 
     List<PicturesViewModel> allPicturesViewManicure();
 
-    List<PicturesViewModel> filterPicturesViewManicure(StyleNameEnum categoryStyle);
+    List<PicturesViewModel> filterPicturesViewManicure(StyleNameEnum styleNameEnum);
 
     void likePictures(Long id);
 
