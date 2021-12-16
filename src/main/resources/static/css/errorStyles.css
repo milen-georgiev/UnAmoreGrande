@@ -1,0 +1,489 @@
+/* 404 Error */
+
+@import url(https://fonts.googleapis.com/css?family=opensans:500);
+body{
+    background: #33cc99;
+    color:#fff;
+    font-family: 'Open Sans', sans-serif;
+    max-height:700px;
+    overflow: hidden;
+}
+.c{
+    text-align: center;
+    display: block;
+    position: relative;
+    width:80%;
+    margin:100px auto;
+}
+._404{
+    font-size: 220px;
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+    height: 250px;
+    letter-spacing: 15px;
+}
+._1{
+    text-align:center;
+    display:block;
+    position:relative;
+    letter-spacing: 12px;
+    font-size: 4em;
+    line-height: 80%;
+}
+._2{
+    text-align:center;
+    display:block;
+    position: relative;
+    font-size: 20px;
+}
+.text{
+    font-size: 70px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    margin: 19px 0px 0px 0px;
+    /* top: 256.301px; */
+    z-index: 3;
+    width: 100%;
+    line-height: 1.2em;
+    display: inline-block;
+}
+
+
+.btn{
+    background-color: rgb( 255, 255, 255 );
+    position: relative;
+    display: inline-block;
+    width: 358px;
+    padding: 5px;
+    z-index: 5;
+    font-size: 25px;
+    margin:0 auto;
+    color:#33cc99;
+    text-decoration: none;
+    margin-right: 10px
+}
+.right{
+    float:right;
+    width:60%;
+}
+
+hr{
+    padding: 0;
+    border: none;
+    border-top: 5px solid #fff;
+    color: #fff;
+    text-align: center;
+    margin: 0px auto;
+    width: 420px;
+    height:10px;
+    z-index: -10;
+}
+
+hr:after {
+    content: "\2022";
+    display: inline-block;
+    position: relative;
+    top: -0.75em;
+    font-size: 2em;
+    padding: 0 0.2em;
+    background: #33cc99;
+}
+
+.cloud {
+    width: 350px; height: 120px;
+
+    background: #FFF;
+    background: linear-gradient(top, #FFF 100%);
+    background: -webkit-linear-gradient(top, #FFF 100%);
+    background: -moz-linear-gradient(top, #FFF 100%);
+    background: -ms-linear-gradient(top, #FFF 100%);
+    background: -o-linear-gradient(top, #FFF 100%);
+
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+
+    position: absolute;
+    margin: 120px auto 20px;
+    z-index:-1;
+    transition: ease 1s;
+}
+
+.cloud:after, .cloud:before {
+    content: '';
+    position: absolute;
+    background: #FFF;
+    z-index: -1
+}
+
+.cloud:after {
+    width: 100px; height: 100px;
+    top: -50px; left: 50px;
+
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+}
+
+.cloud:before {
+    width: 180px; height: 180px;
+    top: -90px; right: 50px;
+
+    border-radius: 200px;
+    -webkit-border-radius: 200px;
+    -moz-border-radius: 200px;
+}
+
+.x1 {
+    top:-50px;
+    left:100px;
+    -webkit-transform: scale(0.3);
+    -moz-transform: scale(0.3);
+    transform: scale(0.3);
+    opacity: 0.9;
+    -webkit-animation: moveclouds 15s linear infinite;
+    -moz-animation: moveclouds 15s linear infinite;
+    -o-animation: moveclouds 15s linear infinite;
+}
+
+.x1_5{
+    top:-80px;
+    left:250px;
+    -webkit-transform: scale(0.3);
+    -moz-transform: scale(0.3);
+    transform: scale(0.3);
+    -webkit-animation: moveclouds 17s linear infinite;
+    -moz-animation: moveclouds 17s linear infinite;
+    -o-animation: moveclouds 17s linear infinite;
+}
+
+.x2 {
+    left: 250px;
+    top:30px;
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 0.6;
+    -webkit-animation: moveclouds 25s linear infinite;
+    -moz-animation: moveclouds 25s linear infinite;
+    -o-animation: moveclouds 25s linear infinite;
+}
+
+.x3 {
+    left: 250px; bottom: -70px;
+
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    transform: scale(0.6);
+    opacity: 0.8;
+
+    -webkit-animation: moveclouds 25s linear infinite;
+    -moz-animation: moveclouds 25s linear infinite;
+    -o-animation: moveclouds 25s linear infinite;
+}
+
+.x4 {
+    left: 470px; botttom: 20px;
+
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    transform: scale(0.75);
+    opacity: 0.75;
+
+    -webkit-animation: moveclouds 18s linear infinite;
+    -moz-animation: moveclouds 18s linear infinite;
+    -o-animation: moveclouds 18s linear infinite;
+}
+
+.x5 {
+    left: 200px; top: 300px;
+
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 0.8;
+
+    -webkit-animation: moveclouds 20s linear infinite;
+    -moz-animation: moveclouds 20s linear infinite;
+    -o-animation: moveclouds 20s linear infinite;
+}
+
+@-webkit-keyframes moveclouds {
+    0% {margin-left: 1000px;}
+    100% {margin-left: -1000px;}
+}
+@-moz-keyframes moveclouds {
+    0% {margin-left: 1000px;}
+    100% {margin-left: -1000px;}
+}
+@-o-keyframes moveclouds {
+    0% {margin-left: 1000px;}
+    100% {margin-left: -1000px;}
+}
+
+/* 500 Error */
+
+.wrapper {
+    position: relative;
+    max-width: 1298px;
+    height: auto;
+    margin: 2em auto 0 auto;
+}
+
+/* https://www.flaticon.com/authors/vectors-market */
+/* https://www.flaticon.com/authors/icomoon */
+.box {
+    max-width: 70%;
+    min-height: auto;
+    margin: 0 auto;
+    padding: 1em 1em;
+    text-align: center;
+    background: url("https://www.dropbox.com/s/xq0841cp3icnuqd/flame.png?raw=1") no-repeat top 10em center/128px 128px,
+    transparent url("https://www.dropbox.com/s/w7qqrcvhlx3pwnf/desktop-pc.png?raw=1") no-repeat top 13em center/128px 128px;
+}
+
+h1, p:not(:last-of-type) { text-shadow: 0 0 6px #216f79; }
+
+h1 {
+    margin: 0 0 1rem 0;
+    font-size: 8em;
+}
+
+p {
+    margin-bottom: 0.5em;
+    font-size: 3em;
+}
+
+p:first-of-type { margin-top: 4em; }
+
+p > a {
+    border-bottom: 1px dashed #216f79;
+    font-style: italic;
+    text-decoration: none;
+    color: #216f79;
+}
+
+p > a:hover { text-shadow: 0 0 6px #216f79; }
+
+p img { vertical-align: bottom; }
+
+/* 403 Error */
+
+.container{
+    position: absolute;
+    right: 30px;
+}
+.message{
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: white;
+    font-weight: 500;
+    position: absolute;
+    top: 230px;
+    left: 40px;
+}
+.message2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    width: 360px;
+    position: absolute;
+    top: 280px;
+    left: 40px;
+}
+
+.neon{
+    text-align: center;
+    width: 300px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 90px;
+    color: #5BE0B3;
+    letter-spacing: 3px;
+    text-shadow: 0 0 5px #6EECC1;
+    animation: flux 2s linear infinite;
+
+}
+.trash{
+    width: 170px;
+    height: 220px;
+    background-color: #585F67;
+    top: 300px;
+}
+.can{
+    width: 190px;
+    height: 30px;
+    background-color: #6B737C;
+    border-radius: 15px 15px 0 0;
+}
+.door-frame {
+    height: 495px;
+    width: 295px;
+    border-radius: 90px 90px 0 0;
+    background-color: #8594A5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.door{
+    height: 450px;
+    width: 250px;
+    border-radius: 70px 70px 0 0;
+    background-color: #A0AEC0;
+}
+
+.eye{
+    top: 15px;
+    left: 25px;
+    height: 5px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: white;
+    animation: eye 7s ease-in-out infinite;
+    position: absolute;
+}
+.eye2{
+    left: 65px;
+}
+
+.window{
+    height: 40px;
+    width: 130px;
+    background-color: #1C2127;
+    border-radius: 3px;
+    margin: 80px auto;
+    position: relative;
+}
+
+.leaf{
+    height: 40px;
+    width: 130px;
+    background-color: #8594A5;
+    border-radius: 3px;
+    margin: 80px auto;
+    animation: leaf 7s infinite;
+    transform-origin: right;
+}
+
+.handle {
+    height: 8px;
+    width: 50px;
+    border-radius: 4px;
+    background-color: #EBF3FC;
+    position: absolute;
+    margin-top: 250px;
+    margin-left: 30px;
+}
+
+.rectangle {
+    height: 70px;
+    width: 25px;
+    background-color: #CBD8E6;
+    border-radius: 4px;
+    position: absolute;
+    margin-top: 220px;
+    margin-left: 20px;
+}
+
+@keyframes leaf {
+    0% {
+        transform: scaleX(1);
+    }
+    5% {
+        transform: scaleX(0.2);
+    }
+    70%{
+        transform: scaleX(0.2);
+    }
+    75%{
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes eye {
+    0% {
+        opacity: 0;
+        transform: translateX(0)
+    }
+    5% {
+        opacity: 0;
+    }
+    15%{
+        opacity: 1;
+        transform: translateX(0)
+    }
+    20% {
+        transform: translateX(15px)
+    }
+    35%{
+        transform: translateX(15px)
+    }
+    40%{
+        transform: translateX(-15px)
+    }
+    60%{
+        transform: translateX(-15px)
+    }
+    65% {
+        transform: translateX(0)
+    }
+}
+
+@keyframes flux {
+    0%,
+    100% {
+        text-shadow: 0 0 5px #f20d4f, 0 0 15px #e50c4b, 0 0 50px #ca063f, 0 0 50px #f4317e, 0 0 2px #B9FFE8, 2px 2px 3px #12E29C;
+        color: #f45393;
+    }
+    50% {
+        text-shadow: 0 0 3px #00B58D, 0 0 7px #00B58D, 0 0 25px #00B58D, 0 0 25px #00B58D, 0 0 2px #00B58D, 2px 2px 3px #006A60;
+        color: #63D3AE;
+    }
+}
+
+/* 408 Error */
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+
+.clock408 {
+    width: 400px;
+    animation: bounce .1s infinite ease-in-out;
+}
+.number408 {
+    font-size: 5em;
+    letter-spacing: 25px;
+    margin-top: -55px;
+}
+.text408 {
+    font-size: 1.2em;
+    text-align: center;
+}
+button {
+    background-color: blue;
+    color: white;
+    padding: 15px;
+    font-size: 1.3em;
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    font: inherit;
+    cursor: pointer;
+    transition: .3s;
+}
+button:hover {
+    background-color: darkblue;
+    transition: .3s;
+}
+@keyframes bounce {
+    50% {
+        transform: translateY(-20px);
+    }
+}

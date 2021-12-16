@@ -38,8 +38,10 @@
                 <div class="form-group">
                     <textarea name="message"
                               id="message"
+                              cols="30"
                               rows="5"
                               class="form-control"
+                              minlength=10
                               placeholder="оставете съобщение"></textarea>
                     <small id="messageError" class="invalid-feedback">
                         Message should be at least 10 characters.
@@ -61,7 +63,7 @@
 </main>
 
 <footer th:replace="fragments/commons::footer"></footer>
-
+<!--<script th:src="@{/js/comment.js}"></script>-->
 </body>
 
 </html>

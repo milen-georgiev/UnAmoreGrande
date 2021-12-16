@@ -3,7 +3,7 @@ package com.example.unamoregrande.model.service;
 public class CommentServiceModel {
 
     private Long articleId;
-    private String description;
+    private String message;
     private String user;
 
     public CommentServiceModel() {
@@ -19,11 +19,11 @@ public class CommentServiceModel {
     }
 
     public String getDescription() {
-        return description;
+        return message;
     }
 
-    public CommentServiceModel setDescription(String description) {
-        this.description = description;
+    public CommentServiceModel setDescription(String message) {
+        this.message = message;
         return this;
     }
 

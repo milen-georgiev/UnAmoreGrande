@@ -28,7 +28,7 @@ async function handleCommentSubmit(event) {
     try {
         const responseData = await postFormDataAsJson({url, formData});
 
-        commentContainer.insertAdjacentHTML("afterbegin", asComment(responseData));
+        commentsCtnr.insertAdjacentHTML("afterbegin", asComment(responseData));
 
         form.reset();
     } catch (error) {
@@ -88,10 +88,10 @@ function asComment(c) {
 
 fetch(`http://localhost:8080/api/${articleId}/comments`)
     .then(response => response.json())
-    .then(com => {
-        for (let comments of com) {
-            allComments.push(comments)
-        }
-        displayComments(allComments)
-    })
+    .then(data => {
+    for (let comment of data) {
+        allComments.push(comment)
+    }
+    displayComments(allComments)
+})
 

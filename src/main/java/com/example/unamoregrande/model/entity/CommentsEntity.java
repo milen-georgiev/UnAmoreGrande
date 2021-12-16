@@ -13,7 +13,7 @@ public class CommentsEntity extends BaseEntity {
 
     @Size(min = 5)
     @NotNull
-    private String description;
+    private String message;
     @ManyToOne
     private UserEntity user;
     @ManyToOne
@@ -25,11 +25,11 @@ public class CommentsEntity extends BaseEntity {
     }
 
     public String getDescription() {
-        return description;
+        return message;
     }
 
-    public CommentsEntity setDescription(String description) {
-        this.description = description;
+    public CommentsEntity setDescription(String message) {
+        this.message = message;
         return this;
     }
 

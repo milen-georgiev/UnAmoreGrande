@@ -47,8 +47,17 @@ public class ResourcesViewController {
     }
 
     @GetMapping("/details/{id}")
-    public String detailsArticles(@PathVariable Long id, Model model) {
+    public String detailsArticles(@PathVariable("id") Long id, Model model) {
 
+//        if (grandmasSecretArticlesService.findArticlesById(id) == null) {
+//            throw new ObjectNotFoundException("Обект с номер " + id + " не е намерен!");
+//        }
+
+//        try {
+//            int idNumber = Integer.parseInt(id.toString());
+//        } catch (NumberFormatException exception){
+//            throw new NumberFormatException("В номера на обекта " + id + " е намерен текст!");
+//        }
 
         model.addAttribute("articles", grandmasSecretArticlesService.findArticlesById(id));
 

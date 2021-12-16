@@ -2,19 +2,14 @@ package com.example.unamoregrande.web;
 
 import com.example.unamoregrande.model.binding.CommentBindingModel;
 import com.example.unamoregrande.model.service.CommentServiceModel;
-import com.example.unamoregrande.model.validation.ApiError;
 import com.example.unamoregrande.model.view.CommentsViewModel;
 import com.example.unamoregrande.service.CommentService;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.net.URI;
 import java.security.Principal;
 import java.util.List;
 
@@ -39,13 +34,11 @@ public class CommentController {
     }
 
     @PostMapping("/api/{articleId}/comments")
-    public ResponseEntity<CommentsViewModel> newComment(
+    public ResponseEntity<List<CommentsViewModel>> newComment(
             @AuthenticationPrincipal UserDetails principal,
             @PathVariable Long articleId,
-            @RequestBody @Valid CommentBindingModel commentBindingModel
+            @RequestBody CommentBindingModel commentBindingModel
     ) {
-
-
         CommentServiceModel commentServiceModel =
                 modelMapper.map(commentBindingModel, CommentServiceModel.class);
         commentServiceModel.setUser(principal.getUsername());
@@ -54,21 +47,33 @@ public class CommentController {
         CommentsViewModel newComment =
                 commentService.createComment(commentServiceModel);
 
-        URI locationOfNewComment =
-                URI.create(String.format("/api/%s/comments/%s", articleId, newComment.getCommentId()));
-
-        return ResponseEntity.
-                created(locationOfNewComment).
-                body(newComment);
+        return ResponseEntity.ok(commentService.getComments(articleId));
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ApiError> onValidationFailure(MethodArgumentNotValidException exc) {
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
-        exc.getFieldErrors().forEach(fe ->
-                apiError.addFieldWithError(fe.getField()));
+//    @PostMapping("/api/{articleId}/comments")
+//    public ResponseEntity<CommentsViewModel> newComment(
+//            @AuthenticationPrincipal UserDetails principal,
+//            @PathVariable Long articleId,
+//            @RequestBody CommentBindingModel commentBindingModel
+//    ) {
+//
+//
+//        CommentServiceModel commentServiceModel =
+//                modelMapper.map(commentBindingModel, CommentServiceModel.class);
+//        commentServiceModel.setUser(principal.getUsername());
+//        commentServiceModel.setArticleId(articleId);
+//
+//        CommentsViewModel newComment =
+//                commentService.createComment(commentServiceModel);
+//
+//        URI locationOfNewComment =
+//                URI.create(String.format("/api/%s/comments/%s", articleId, newComment.getCommentId()));
+//
+//        return ResponseEntity.
+//                created(locationOfNewComment).
+//                body(newComment);
+//    }
 
-        return ResponseEntity.badRequest().body(apiError);
-    }
+
 
 }

@@ -45,7 +45,7 @@ public class CommentServiceImpl implements CommentService {
         newComment.setDescription(commentServiceModel.getDescription());
         newComment.setUser(user);
         newComment.setArticles(article);
-        newComment.setAlerts("unverified ");
+        newComment.setAlerts("unverified");
         newComment.setAdded(LocalDateTime.now());
 
         CommentsEntity savedComment = commentRepository.save(newComment);
