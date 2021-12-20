@@ -13,4 +13,6 @@ public interface UserService {
 
     UserViewModel userDetails(String user);
 
+    void addAdmin(String username);
+
 }

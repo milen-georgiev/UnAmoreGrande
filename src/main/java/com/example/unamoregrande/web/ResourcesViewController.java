@@ -54,7 +54,7 @@ public class ResourcesViewController {
 //        }
 
 //        try {
-//            int idNumber = Integer.parseInt(id.toString());
+//            int idNumber = Integer.parseInt(id.toString());w
 //        } catch (NumberFormatException exception){
 //            throw new NumberFormatException("В номера на обекта " + id + " е намерен текст!");
 //        }

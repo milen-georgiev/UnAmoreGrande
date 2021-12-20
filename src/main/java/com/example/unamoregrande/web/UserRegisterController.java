@@ -65,7 +65,7 @@ public class UserRegisterController {
 
         userService.registerAndLoginUser(UserRegistrationServiceModel);
 
-        return "profile";
+        return "/";
     }
 
 

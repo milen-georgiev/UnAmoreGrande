@@ -49,6 +49,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void addAdmin(String username) {
+        UserEntity userEntity = userRepository.findByUsername(username).orElseThrow();
+        UserRoleEntity adminRole = userRoleRepository.findByName(RoleNameEnum.ADMIN);
+
+        userEntity.getRoles().add(adminRole);
+        userRepository.save(userEntity);
+    }
+
+
+    @Override
     public void initializeUsersAndRoles() {
         initializeRoles();
         initializeUsers();
