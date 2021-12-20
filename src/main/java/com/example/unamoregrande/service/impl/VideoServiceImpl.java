@@ -1,5 +1,6 @@
 package com.example.unamoregrande.service.impl;
 
+import com.example.unamoregrande.model.entity.UserEntity;
 import com.example.unamoregrande.model.entity.VideoEntity;
 import com.example.unamoregrande.model.service.VideoServiceModel;
 import com.example.unamoregrande.model.view.VideoViewModel;
@@ -49,6 +50,19 @@ public class VideoServiceImpl implements VideoService {
         return allVideo
                 .stream()
                 .map(videoEntity -> modelMapper.map(videoEntity,VideoViewModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<VideoViewModel> onlyVideoUser(String username) {
+
+        UserEntity user = userRepository.findByUsername(username).orElseThrow();
+
+        List<VideoEntity> videoEntity = videoRepository.findVideoEntityByUser(user);
+
+        return videoEntity
+                .stream()
+                .map(videoEntity1 -> modelMapper.map(videoEntity, VideoViewModel.class))
                 .collect(Collectors.toList());
     }
 

@@ -10,4 +10,6 @@ public interface VideoService {
     void addVideo(VideoServiceModel videoServiceModel, String username);
 
     List<VideoViewModel> viewVideo();
+
+    List<VideoViewModel> onlyVideoUser(String username);
 }

@@ -1,6 +1,7 @@
 package com.example.unamoregrande.service.impl;
 
 import com.example.unamoregrande.model.entity.PicturesEntity;
+import com.example.unamoregrande.model.entity.UserEntity;
 import com.example.unamoregrande.model.entity.enums.StyleNameEnum;
 import com.example.unamoregrande.model.entity.enums.TypeNameEnum;
 import com.example.unamoregrande.model.service.PicturesServiceModel;
@@ -137,6 +138,20 @@ public class PicturesServiceImpl implements PicturesService {
 
         List<PicturesEntity> picturesEntityList = picturesRepository
                 .findPicturesEntityByCategoryTypeAndCategoryStyle(TypeNameEnum.MANICURE, styleNameEnum);
+
+        return picturesEntityList
+                .stream()
+                .map(picturesEntity -> modelMapper.map(picturesEntity, PicturesViewModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PicturesViewModel> onlyPicturesOfUser(String username) {
+
+        UserEntity user = userRepository.findByUsername(username).orElseThrow();
+
+        List<PicturesEntity> picturesEntityList = picturesRepository
+                .findPicturesEntityByUser(user);
 
         return picturesEntityList
                 .stream()

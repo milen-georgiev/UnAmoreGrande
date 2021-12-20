@@ -14,7 +14,6 @@ public interface GrandmasSecretArticlesService {
 
     GrandmasSecretViewModel findArticlesById(Long id);
 
-
-
+    List<GrandmasSecretViewModel> onlyArticlesUser(String username);
 
 }

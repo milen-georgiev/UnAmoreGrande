@@ -23,6 +23,8 @@ public interface PicturesService {
 
     List<PicturesViewModel> filterPicturesViewManicure(StyleNameEnum styleNameEnum);
 
+    List<PicturesViewModel> onlyPicturesOfUser(String username);
+
     void likePictures(Long id);
 
     void deletePictures(String publicId);

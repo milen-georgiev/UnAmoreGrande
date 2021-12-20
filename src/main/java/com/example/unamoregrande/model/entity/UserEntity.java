@@ -1,6 +1,7 @@
 package com.example.unamoregrande.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,12 +12,15 @@ public class UserEntity extends BaseEntity{
 
     @Column(nullable = false, unique = true)
     private String username;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
     private String email;
+    @NotNull
     private Integer age;
     @Column(nullable = false)
     private LocalDate created;

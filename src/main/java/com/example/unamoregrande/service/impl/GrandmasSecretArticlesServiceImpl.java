@@ -1,6 +1,7 @@
 package com.example.unamoregrande.service.impl;
 
 import com.example.unamoregrande.model.entity.GrandmasSecretArticlesEntity;
+import com.example.unamoregrande.model.entity.UserEntity;
 import com.example.unamoregrande.model.service.GrandmasSecretArticlesServiceModel;
 import com.example.unamoregrande.model.view.GrandmasSecretViewModel;
 import com.example.unamoregrande.repository.GrandmasSecretArticlesRepository;
@@ -83,5 +84,19 @@ public class GrandmasSecretArticlesServiceImpl implements GrandmasSecretArticles
                 .map(grandmasSecretArticlesEntity -> modelMapper.map(grandmasSecretArticlesEntity, GrandmasSecretViewModel.class))
                 .orElse(null);
 
+    }
+
+    @Override
+    public List<GrandmasSecretViewModel> onlyArticlesUser(String username) {
+
+        UserEntity user = userRepository.findByUsername(username).orElseThrow();
+
+        List<GrandmasSecretArticlesEntity> grandmasSecretArticlesEntities = grandmasSecretArticlesRepository
+                .findGrandmasSecretArticlesEntityByPublished(user);
+
+        return grandmasSecretArticlesEntities
+                .stream()
+                .map(grandmasSecretArticlesEntity -> modelMapper.map(grandmasSecretArticlesEntities, GrandmasSecretViewModel.class))
+                .collect(Collectors.toList());
     }
 }

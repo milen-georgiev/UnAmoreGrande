@@ -8,88 +8,162 @@
 <body>
 <header th:replace="fragments/commons::navigation"></header>
 
-  <main>
+<main>
     <div class="container mt-5">
-      <div class="row">
-        <div class="col-12">
-          <div class="align-self-start">
-            <div class="container d-flex justify-content-center">
-              <div class="card p-4 profile-detail detail-br">
-                <div class=" image d-flex flex-column justify-content-center align-items-center">
-                  <div class="profile-images">
-                    <img src="https://assets.webiconspng.com/uploads/2017/01/Computer-Users-Icon-PNG.png" height="100"
-                      width="100" />
-                  </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="align-self-start">
+                    <div class="container d-flex justify-content-center">
+                        <div class="card p-4 profile-detail detail-br">
+                            <div class=" image d-flex flex-column justify-content-center align-items-center">
+                                <div class="profile-images">
+                                    <img src="https://assets.webiconspng.com/uploads/2017/01/Computer-Users-Icon-PNG.png"
+                                         height="100"
+                                         width="100"/>
+                                </div>
 
-                  <div class="row m-5">
+                                <div class="row m-5">
 
-                    <div class="col-md-4 col-12 d-flex justify-content-center">
-                      <div class="card border-primary mb-3">
-                        <div class="card-header">Здравей : <th:block th:text="${userViewModel.getUsername()}"></th:block></div>
-                        <div class="card-body text-primary">
-                          <p class="card-text">Име : <th:block th:text="${userViewModel.getFirstName()}"></th:block></p>
-                          <p class="card-text">Фамилия: <th:block th:text="${userViewModel.getLastName()}"></th:block></p>
-                          <p class="card-text">Години : <th:block th:text="${userViewModel.getAge()}"></th:block></p>
-                          <p class="card-text">E-mail: <th:block th:text="${userViewModel.getEmail()}"></th:block></p>
+                                    <div class="col-md-4 col-12 d-flex justify-content-center">
+                                        <div class="card border-primary mb-3">
+                                            <div class="card-header">Здравей :
+                                                <th:block th:text="${userViewModel.getUsername()}"></th:block>
+                                            </div>
+                                            <div class="card-body text-primary">
+                                                <p class="card-text">Име :
+                                                    <th:block th:text="${userViewModel.getFirstName()}"></th:block>
+                                                </p>
+                                                <p class="card-text">Фамилия:
+                                                    <th:block th:text="${userViewModel.getLastName()}"></th:block>
+                                                </p>
+                                                <p class="card-text">Години :
+                                                    <th:block th:text="${userViewModel.getAge()}"></th:block>
+                                                </p>
+                                                <p class="card-text">E-mail:
+                                                    <th:block th:text="${userViewModel.getEmail()}"></th:block>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-12 d-flex justify-content-center">
+                                        <div class="card border-primary mb-3">
+                                            <div class="card-header">Статистика</div>
+                                            <div class="card-body text-primary">
+                                                <p class="card-text">Побликувани снимки:
+                                                    <th:block th:text="${userPictures.size()}"></th:block>
+                                                </p>
+                                                <p class="card-text">Побликувани Клипове:
+                                                    <th:block th:text="${userVideo.size()}"></th:block>
+                                                </p>
+                                                <p class="card-text">Побликувани Статии:
+                                                    <th:block th:text="${userArticles.size()}"></th:block>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4  col-12 d-flex justify-content-center">
+                                        <div class="card border-primary mb-3">
+                                            <div class="card-header">Инфо</div>
+                                            <div class="card-body text-primary">
+                                                <p class="card-text">Регистриран:
+                                                    <th:block th:text="${userViewModel.getCreated()}"></th:block>
+                                                </p>
+                                                <p class="card-text">Провомощия: </p>
+                                                <p class="card-text" th:each="r : ${userViewModel.getRoles()}"
+                                                   th:text="${r.getName()}"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row m-5">
+                                        <div class="col-md-4 col-12 d-flex justify-content-center">
+                                            <div class=" d-flex mt-2 ">
+                                                <form th:action="@{/users/logout}"
+                                                      th:method="POST">
+                                                    <button class="btn1 btn-secondary button-profile detail-br"
+                                                            type="submit" value="Logout">Изход
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4  col-12 d-flex justify-content-center">
+                                            <div class=" d-flex mt-2">
+                                                <button class="btn1 btn-success button-profile detail-br">Промени
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4  col-12 d-flex justify-content-center">
+                                            <div class=" d-flex mt-2">
+                                                <button class="btn1 btn-danger button-profile detail-br">Изтриване
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-
-                    <div class="col-md-4 col-12 d-flex justify-content-center">
-                      <div class="card border-primary mb-3">
-                        <div class="card-header">Статистика</div>
-                        <div class="card-body text-primary">
-                          <p class="card-text">Побликувани снимки: 15</p>
-                          <p class="card-text">Побликувани Клипове: 5</p>
-                          <p class="card-text">Побликувани Статии: 10</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4  col-12 d-flex justify-content-center">
-                      <div class="card border-primary mb-3">
-                        <div class="card-header">Инфо</div>
-                        <div class="card-body text-primary">
-                          <p class="card-text">Регистриран: <th:block th:text="${userViewModel.getCreated()}"></th:block></p>
-                          <p class="card-text">Провомощия: </p>
-                          <p class="card-text" th:each="r : ${userViewModel.getRoles()}" th:text="${r.getName()}"></p>
-                        </div>
-                      </div>
-                    </div>
-
-
-                      <div class="row m-5">
-                        <div class="col-md-4 col-12 d-flex justify-content-center">
-                          <div class=" d-flex mt-2 ">
-                            <form th:action="@{/users/logout}"
-                                    th:method="POST">
-                            <button class="btn1 btn-secondary button-profile detail-br" type="submit" value="Logout" >Изход</button>
-                            </form>
-                          </div>
-                        </div>
-                        <div class="col-md-4  col-12 d-flex justify-content-center">
-                          <div class=" d-flex mt-2">
-                            <button class="btn1 btn-success button-profile detail-br">Промени</button>
-                          </div>
-                        </div>
-                        <div class="col-md-4  col-12 d-flex justify-content-center">
-                          <div class=" d-flex mt-2">
-                            <button class="btn1 btn-danger button-profile detail-br">Изтриване</button>
-                          </div>
-                        </div>
-
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
 
-      </div>
+        <section class="container mt-5 border border-dark rounded">
+            <div class="row">
+                <div class="col-12">
+                    <div class="container d-flex justify-content-center">
+                        <h2>Мойте клипове</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div th:each="v : ${userVideo}" class="col-lg-4 mt-5">
+                    <iframe class="gallery-form-view" id="frame"
+                            th:src="'https://www.youtube.com/embed/' + ${v.videoUrl}"></iframe>
+                </div>
+            </div>
+        </section>
 
-
+        <section class="container mt-5 border border-dark rounded">
+            <div class="row">
+                <div class="col-12">
+                    <div class="container d-flex justify-content-center">
+                        <h2>Мойте снимки</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div th:each="p : ${userPictures}" class="gallery-card col-lg-3 col-md-4 col-12 mt-4">
+                    <img th:src="${p.getUrl()}" class="img-fluid gallery-form-view" alt="images">
+                    <div class="row">
+                        <div class="col-12 mt-2 text-center">
+                            <div class="row">
+                                <div class="col-4">
+                                    <form th:action="@{/deleteUserPictures}"
+                                          th:method="DELETE">
+                                        <input type="hidden" name="public_id" th:value="${p.getPublicId()}">
+                                        <input type="submit"
+                                               class="pictures-button-delete pictures-button gallery-form-view"
+                                               value="Изтрий">
+                                    </form>
+                                </div>
+                                <div class="col-4">
+                                    <a th:href="${p.getUrl()}"
+                                       class="pictures-button-detail pictures-button gallery-form-view">Детайлс</a>
+                                </div>
+                                <div class="col-3">
+                                    <p th:text="${p.getLikes()}" class="like-view gallery-form-view"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-  </main>
+</main>
 
 
 <footer th:replace="fragments/commons::footer"></footer>

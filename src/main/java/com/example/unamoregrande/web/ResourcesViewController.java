@@ -2,13 +2,18 @@ package com.example.unamoregrande.web;
 
 import com.example.unamoregrande.model.view.GrandmasSecretViewModel;
 import com.example.unamoregrande.model.view.VideoViewModel;
+import com.example.unamoregrande.service.CloudinaryService;
 import com.example.unamoregrande.service.GrandmasSecretArticlesService;
+import com.example.unamoregrande.service.PicturesService;
 import com.example.unamoregrande.service.VideoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Controller
@@ -16,10 +21,14 @@ public class ResourcesViewController {
 
     private final VideoService videoService;
     private final GrandmasSecretArticlesService grandmasSecretArticlesService;
+    private final CloudinaryService cloudinaryService;
+    private final PicturesService picturesService;
 
-    public ResourcesViewController(VideoService videoService, GrandmasSecretArticlesService grandmasSecretArticlesService) {
+    public ResourcesViewController(VideoService videoService, GrandmasSecretArticlesService grandmasSecretArticlesService, CloudinaryService cloudinaryService, PicturesService picturesService) {
         this.videoService = videoService;
         this.grandmasSecretArticlesService = grandmasSecretArticlesService;
+        this.cloudinaryService = cloudinaryService;
+        this.picturesService = picturesService;
     }
 
     //     Video page  ---------------------------
@@ -35,6 +44,15 @@ public class ResourcesViewController {
         return "video";
     }
 
+    @Transactional
+    @DeleteMapping("/deleteUserPictures")
+    public String deletePictures(@RequestParam("public_id") String publicId) {
+        if (cloudinaryService.delete(publicId)) {
+            picturesService.deletePictures(publicId);
+        }
+
+        return "redirect:/users/profile";
+    }
 
     @GetMapping("/resources/grandmother")
     public String grandmotherSecret(Model model) {
